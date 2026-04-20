@@ -2,15 +2,18 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
       center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
+      padding: "1rem",
+      screens: { "2xl": "1400px" },
     },
     extend: {
       colors: {
@@ -47,9 +50,14 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Brand semantic tokens
         ivory: "hsl(var(--ivory))",
         blush: "hsl(var(--blush))",
+        "rose-gold": "hsl(var(--blush))",
         champagne: "hsl(var(--champagne))",
+        burgundy: "hsl(var(--burgundy))",
+        surface: "hsl(var(--card))",
+        "surface-2": "hsl(var(--input))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -62,14 +70,23 @@ export default {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
+        DEFAULT: "var(--radius)",
         sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 2px)",
+        lg: "var(--radius)",
+        xl: "calc(var(--radius) + 4px)",
+        "2xl": "calc(var(--radius) + 8px)",
+        "3xl": "calc(var(--radius) + 16px)",
+        "4xl": "2rem",
+        "5xl": "3rem",
       },
       fontFamily: {
-        serif: ['Fraunces', 'Georgia', 'serif'],
-        display: ['Fraunces', 'Georgia', 'serif'],
-        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        serif: ["Fraunces", "Georgia", "serif"],
+        display: ["Fraunces", "Georgia", "serif"],
+        sans: ['"DM Sans"', "system-ui", "sans-serif"],
+      },
+      backdropBlur: {
+        xs: "2px",
       },
       keyframes: {
         "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },
@@ -77,19 +94,8 @@ export default {
         "fade-in": { "0%": { opacity: "0", transform: "translateY(16px)" }, "100%": { opacity: "1", transform: "none" } },
         "fade-in-slow": { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
         "scale-in": { "0%": { opacity: "0", transform: "scale(0.96)" }, "100%": { opacity: "1", transform: "scale(1)" } },
-        "float": { "0%,100%": { transform: "translateY(0)" }, "50%": { transform: "translateY(-8px)" } },
         "fadeUp": { "0%": { opacity: "0", transform: "translateY(24px)" }, "100%": { opacity: "1", transform: "translateY(0)" } },
         "kenburns": { "0%": { transform: "scale(1)" }, "100%": { transform: "scale(1.08)" } },
-        "floatParticle": {
-          "0%,100%": { transform: "translateY(0) translateX(0)", opacity: "0.6" },
-          "50%": { transform: "translateY(-14px) translateX(6px)", opacity: "1" },
-        },
-        "scrollLine": {
-          "0%": { transform: "scaleY(0)", transformOrigin: "top" },
-          "50%": { transform: "scaleY(1)", transformOrigin: "top" },
-          "51%": { transform: "scaleY(1)", transformOrigin: "bottom" },
-          "100%": { transform: "scaleY(0)", transformOrigin: "bottom" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -97,7 +103,11 @@ export default {
         "fade-in": "fade-in 0.8s ease-out both",
         "fade-in-slow": "fade-in-slow 1.4s ease-out both",
         "scale-in": "scale-in 0.6s ease-out both",
-        "float": "float 4s ease-in-out infinite",
+        // Match user-provided names (keyframes live in index.css)
+        "float": "float-particle 6s ease-in-out infinite",
+        "gentle-pulse": "gentle-pulse 3s ease-in-out infinite",
+        "scroll-indicator": "scroll-indicator 1.5s ease-in-out infinite",
+        "shimmer": "shimmer 4s linear infinite",
       },
     },
   },

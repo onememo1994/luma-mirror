@@ -1,7 +1,7 @@
 const stats = [
-  { value: "12+", label: "Years of Craft" },
-  { value: "97%", label: "Satisfaction" },
-  { value: "100%", label: "Natural" },
+  { value: "12+", label: "Years of Expertise" },
+  { value: "97%", label: "Satisfaction rate" },
+  { value: "100%", label: "Natural Ingredients" },
 ];
 
 export const Story = () => {
@@ -19,9 +19,9 @@ export const Story = () => {
           </div>
           <div className="absolute -bottom-6 -right-6 hidden md:block bg-background border border-blush/30 rounded-sm px-6 py-5 max-w-xs">
             <p className="font-serif italic text-ivory/90 text-lg leading-snug">
-              "Beauty is nature, crystallised."
+              "Beauty is not about perfection. It's about confidence in your own skin."
             </p>
-            <p className="mt-2 text-xs tracking-widest text-blush uppercase">— Lumina Atelier</p>
+            <p className="mt-2 text-xs tracking-widest text-blush uppercase">— Lumina Founder</p>
           </div>
         </div>
 
@@ -33,9 +33,7 @@ export const Story = () => {
             <span className="italic">Refined by Science.</span>
           </h2>
           <p className="mt-6 text-ivory/70 leading-relaxed max-w-lg">
-            Every Lumina formula begins with rare botanicals harvested at peak potency, then
-            elevated through clinical precision. The result: skincare and cosmetics that feel
-            couture and perform like science.
+            Lumina Beauty was founded on a singular belief: that the most powerful beauty ingredients are found in nature. Every formula begins in our botanical laboratories, where ancient remedies meet modern dermatology.
           </p>
 
           <div className="mt-12 grid grid-cols-3 gap-6">

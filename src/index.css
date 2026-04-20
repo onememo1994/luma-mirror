@@ -6,54 +6,49 @@
 
 @layer base {
   :root {
-    /* Lumina Beauty palette — dark cinematic, ivory text, blush accent */
-    --background: 22 22% 8%;            /* #1a1410 */
+    /* Lumina Beauty palette — deep dark cinematic, ivory text, rose gold accent */
+    --background: 0 0% 4%;              /* #0a0a0a */
     --foreground: 40 60% 90%;           /* #f5ebd9 */
 
-    --card: 22 22% 11%;
+    --card: 0 0% 7%;
     --card-foreground: 40 60% 90%;
 
-    --popover: 22 22% 10%;
+    --popover: 0 0% 6%;
     --popover-foreground: 40 60% 90%;
 
-    --primary: 359 64% 88%;             /* blush pink #f4cfd0 */
-    --primary-foreground: 22 30% 12%;
+    --primary: 355 51% 81%;             /* rose gold #e8b4b8 */
+    --primary-foreground: 0 0% 4%;
 
-    --secondary: 30 18% 16%;
+    --secondary: 0 0% 10%;
     --secondary-foreground: 40 60% 90%;
 
-    --muted: 28 14% 18%;
-    --muted-foreground: 36 22% 70%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 25 35% 55%;               /* champagne/rose */
-    --accent-foreground: 22 30% 10%;
+    --accent: 355 51% 81%;               /* rose gold */
+    --accent-foreground: 0 0% 4%;
 
     --destructive: 0 70% 50%;
     --destructive-foreground: 40 60% 95%;
 
-    --border: 30 15% 20%;
-    --input: 30 15% 20%;
-    --ring: 359 64% 80%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 355 51% 81%;
 
-    --radius: 9999px;
+    --radius: 0.5rem;
 
     --ivory: 40 60% 90%;
-    --blush: 359 64% 88%;
+    --blush: 355 51% 81%;
     --champagne: 36 45% 70%;
 
-    --sidebar-background: 22 22% 8%;
+    --sidebar-background: 0 0% 4%;
     --sidebar-foreground: 40 60% 90%;
-    --sidebar-primary: 359 64% 88%;
-    --sidebar-primary-foreground: 22 30% 12%;
-    --sidebar-accent: 30 18% 16%;
+    --sidebar-primary: 355 51% 81%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 10%;
     --sidebar-accent-foreground: 40 60% 90%;
-    --sidebar-border: 30 15% 20%;
-    --sidebar-ring: 359 64% 80%;
-  }
-
-  .dark {
-    --background: 22 22% 8%;
-    --foreground: 40 60% 90%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 355 51% 81%;
   }
 }
 
@@ -106,5 +101,41 @@
   }
   .hover-lift:hover {
     transform: translateY(-6px);
+  }
+  .shine-btn {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine-btn::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 60%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(45deg);
+    transition: all 0.3s;
+    opacity: 0;
+  }
+  .shine-btn:hover::after {
+    opacity: 1;
+    left: 100%;
+    top: 100%;
+    transition: all 0.7s;
+  }
+  .rose-gold-glow {
+    box-shadow: 0 0 15px rgba(232, 180, 184, 0.3);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  .rose-gold-glow:hover {
+    box-shadow: 0 0 25px rgba(232, 180, 184, 0.5);
   }
 }

@@ -5,11 +5,7 @@ export const Hero = () => {
     <section id="top" className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1614859324967-bdf413c35a334?auto=format&fit=crop&w=2000&q=80"
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).src =
-              "https://images.unsplash.com/photo-1522335789203-aaa6b80b6f4e?auto=format&fit=crop&w=2000&q=80";
-          }}
+          src="/assets/hero.png"
           alt="Luxury skincare model with golden glow"
           className="w-full h-full object-cover"
           loading="eager"
@@ -32,14 +28,13 @@ export const Hero = () => {
           </h1>
 
           <p className="mt-8 max-w-xl text-lg text-ivory/70 leading-relaxed">
-            Crafted with the finest botanicals and refined by science — Lumina reveals the radiance
-            already within you.
+            Premium skincare crafted with nature's finest ingredients for skin that radiates from within.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
             <a
               href="#products"
-              className="px-8 py-3.5 rounded-full bg-blush text-primary-foreground font-medium hover:bg-blush/90 transition shadow-xl shadow-blush/20"
+              className="px-8 py-3.5 rounded-full bg-blush text-primary-foreground font-medium hover:bg-blush/90 transition shadow-xl shadow-blush/20 shine-btn rose-gold-glow"
             >
               Shop Now
             </a>

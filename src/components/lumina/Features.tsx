@@ -1,10 +1,10 @@
 import { Leaf, Heart, ShieldCheck, Sparkles } from "lucide-react";
 
 const items = [
-  { icon: Leaf, title: "Natural Ingredients", desc: "Wild-harvested botanicals at peak potency." },
-  { icon: Heart, title: "Cruelty-Free", desc: "Always. No exceptions, ever." },
-  { icon: ShieldCheck, title: "Dermatologist Tested", desc: "Clinically proven, gentle on every skin." },
-  { icon: Sparkles, title: "Visible Results", desc: "Glow you can see in 14 days." },
+  { icon: Leaf, title: "Natural Ingredients", desc: "100% botanically sourced actives. No parabens, sulfates, or synthetic fragrances. Just pure, effective nature." },
+  { icon: Heart, title: "Cruelty-Free", desc: "Every Lumina formula is certified cruelty-free and vegan. Beauty that respects all life." },
+  { icon: ShieldCheck, title: "Dermatologist Tested", desc: "Clinically validated by independent dermatologists. Safe for all skin types including sensitive." },
+  { icon: Sparkles, title: "Visible Results", desc: "Transformation you can see and feel within 2 weeks of consistent use. Real science, real results." },
 ];
 
 export const Features = () => {

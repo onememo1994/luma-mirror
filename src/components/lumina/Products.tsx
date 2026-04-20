@@ -7,9 +7,9 @@ const products = [
     id: "radiance-glow-serum",
     name: "Radiance Glow Serum",
     category: "Skincare",
-    price: 89,
+    price: 78,
     badge: "Best Seller",
-    img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=900&q=80",
+    img: "/assets/serum.png",
   },
   {
     id: "velvet-lip-elixir",
@@ -17,39 +17,15 @@ const products = [
     category: "Makeup",
     price: 42,
     badge: "New",
-    img: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=900&q=80",
+    img: "/assets/elixir.png",
   },
   {
     id: "pearl-luminosity-cream",
     name: "Pearl Luminosity Cream",
     category: "Skincare",
-    price: 124,
+    price: 95,
     badge: "Award Winner",
-    img: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    id: "golden-hour-bronzer",
-    name: "Golden Hour Bronzer",
-    category: "Makeup",
-    price: 56,
-    badge: "Trending",
-    img: "https://images.unsplash.com/photo-1631214524020-3c8c9f3a0b2e?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    id: "rose-petal-toner",
-    name: "Rose Petal Toner",
-    category: "Skincare",
-    price: 48,
-    badge: "Best Seller",
-    img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    id: "midnight-repair-mask",
-    name: "Midnight Repair Mask",
-    category: "Skincare",
-    price: 78,
-    badge: "Limited",
-    img: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=900&q=80",
+    img: "/assets/cream.png",
   },
 ];
 
@@ -63,7 +39,7 @@ export const Products = () => {
         <div className="reveal max-w-2xl">
           <p className="text-xs tracking-[0.3em] uppercase text-blush">Signature Collection</p>
           <h2 className="mt-4 font-serif text-5xl md:text-6xl text-ivory text-balance">
-            Couture for your <span className="italic">complexion.</span>
+            Our most-loved formulas, <span className="italic">trusted by thousands.</span>
           </h2>
         </div>
 
@@ -105,7 +81,7 @@ export const Products = () => {
                         action: { label: "View", onClick: () => openCart() },
                       });
                     }}
-                    className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-blush text-primary-foreground text-sm font-medium hover:bg-blush/90"
+                    className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-blush text-primary-foreground text-sm font-medium hover:bg-blush/90 transition shine-btn rose-gold-glow"
                   >
                     <ShoppingBag className="w-4 h-4" /> Add to Cart
                   </button>

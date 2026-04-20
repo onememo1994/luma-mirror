@@ -79,7 +79,7 @@ export const Header = () => {
           </button>
           <a
             href="#products"
-            className="px-6 py-2.5 rounded-full bg-blush text-primary-foreground text-sm font-medium hover:bg-blush/90 transition shadow-lg shadow-blush/10"
+            className="px-6 py-2.5 rounded-full bg-blush text-primary-foreground text-sm font-medium hover:bg-blush/90 transition shadow-lg shadow-blush/10 shine-btn rose-gold-glow"
           >
             Shop Now
           </a>

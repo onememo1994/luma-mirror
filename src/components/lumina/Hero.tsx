@@ -1,98 +1,101 @@
+import { useEffect, useState } from "react";
+import { ChevronDown, Sparkles } from "lucide-react";
+
 const particles = [
-  { left: "8%", top: "18%", size: 4, delay: "0s", color: "ivory" },
-  { left: "14%", top: "62%", size: 3, delay: "1.2s", color: "blush" },
-  { left: "22%", top: "35%", size: 2, delay: "2.4s", color: "ivory" },
-  { left: "28%", top: "78%", size: 3, delay: "0.6s", color: "blush" },
-  { left: "38%", top: "12%", size: 2, delay: "1.8s", color: "ivory" },
-  { left: "46%", top: "88%", size: 4, delay: "0.3s", color: "blush" },
-  { left: "55%", top: "8%", size: 3, delay: "2.1s", color: "ivory" },
-  { left: "62%", top: "70%", size: 2, delay: "1.5s", color: "ivory" },
-  { left: "70%", top: "25%", size: 3, delay: "0.9s", color: "blush" },
-  { left: "78%", top: "55%", size: 4, delay: "2.7s", color: "ivory" },
-  { left: "85%", top: "82%", size: 2, delay: "1.1s", color: "blush" },
-  { left: "92%", top: "30%", size: 3, delay: "0.4s", color: "ivory" },
-  { left: "5%", top: "92%", size: 2, delay: "2.0s", color: "blush" },
-  { left: "32%", top: "50%", size: 2, delay: "1.7s", color: "ivory" },
-  { left: "68%", top: "92%", size: 3, delay: "0.8s", color: "blush" },
+  { left: "8%", top: "18%", size: 4, delay: "0s" },
+  { left: "14%", top: "62%", size: 3, delay: "1.2s" },
+  { left: "22%", top: "35%", size: 2, delay: "2.4s" },
+  { left: "28%", top: "78%", size: 3, delay: "0.6s" },
+  { left: "38%", top: "12%", size: 2, delay: "1.8s" },
+  { left: "46%", top: "88%", size: 4, delay: "0.3s" },
+  { left: "55%", top: "8%", size: 3, delay: "2.1s" },
+  { left: "62%", top: "70%", size: 2, delay: "1.5s" },
+  { left: "70%", top: "25%", size: 3, delay: "0.9s" },
+  { left: "78%", top: "55%", size: 4, delay: "2.7s" },
+  { left: "85%", top: "82%", size: 2, delay: "1.1s" },
+  { left: "92%", top: "30%", size: 3, delay: "0.4s" },
 ];
 
 export const Hero = () => {
+  const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setRevealed(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <section id="top" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image with slow ken-burns zoom */}
-      <div className="absolute inset-0">
+    <section id="top" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+      {/* Background with slow subtle zoom */}
+      <div className="absolute inset-0 z-0">
         <img
           src="/assets/hero.png"
           alt="Luxury skincare model with luminous glowing skin"
-          className="w-full h-full object-cover animate-[kenburns_24s_ease-in-out_infinite_alternate]"
+          className="w-full h-full object-cover transition-transform duration-[10s] ease-out scale-105"
+          style={{ transform: revealed ? 'scale(1)' : 'scale(1.1)' }}
           loading="eager"
         />
-        {/* Cinematic vignette — keep image visible */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/70" />
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-background/40" />
-        <div className="absolute inset-0 bg-background/10" />
+        <div className="absolute inset-0 bg-background/20" />
       </div>
 
       {/* Floating particles */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none z-10">
         {particles.map((p, i) => (
           <span
             key={i}
-            className="absolute rounded-full animate-[floatParticle_6s_ease-in-out_infinite]"
+            className="absolute rounded-full bg-rose-gold/40 animate-float"
             style={{
               left: p.left,
               top: p.top,
               width: `${p.size}px`,
               height: `${p.size}px`,
-              backgroundColor: p.color === "blush" ? "hsl(var(--blush) / 0.7)" : "hsl(var(--ivory) / 0.6)",
-              boxShadow: p.color === "blush"
-                ? "0 0 8px hsl(var(--blush) / 0.6)"
-                : "0 0 6px hsl(var(--ivory) / 0.4)",
               animationDelay: p.delay,
+              boxShadow: "0 0 10px rgba(232, 180, 184, 0.5)",
             }}
           />
         ))}
       </div>
 
-      <div className="relative container py-32 text-center">
+      <div className="relative container py-32 text-center z-20">
         <div className="flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-blush/30 bg-background/40 backdrop-blur-sm text-blush text-[11px] tracking-[0.3em] uppercase opacity-0 animate-[fadeUp_0.9s_ease-out_0.1s_forwards]">
-            <span className="w-1.5 h-1.5 rounded-full bg-blush animate-pulse" />
+          <div className={`inline-flex items-center gap-2 px-5 py-2 rounded-full border border-rose-gold/20 bg-surface/40 backdrop-blur-md text-rose-gold text-[10px] tracking-[0.4em] uppercase transition-all duration-1000 ${revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <Sparkles className="w-3 h-3 animate-gentle-pulse" />
             Luxury Natural Beauty
           </div>
 
-          <h1 className="mt-8 font-serif font-normal text-[clamp(3rem,9vw,7.5rem)] leading-[0.95] tracking-tight text-ivory text-balance">
-            <span className="block opacity-0 animate-[fadeUp_1s_ease-out_0.35s_forwards]">
+          <h1 className="mt-10 font-display text-[clamp(2.5rem,10vw,7rem)] leading-[0.9] tracking-tighter text-ivory">
+            <span className={`block clip-reveal ${revealed ? 'revealed' : ''}`}>
               Discover Your
             </span>
-            <span className="block italic text-blush opacity-0 animate-[fadeUp_1.1s_ease-out_0.7s_forwards]">
+            <span className={`block italic text-rose-gold clip-reveal ${revealed ? 'revealed' : ''}`} style={{ transitionDelay: '0.4s' }}>
               Natural Glow.
             </span>
           </h1>
 
-          <p className="mt-8 max-w-xl text-lg text-ivory/70 leading-relaxed opacity-0 animate-[fadeUp_0.9s_ease-out_1.1s_forwards]">
-            Premium skincare crafted with nature's finest ingredients for skin that radiates from within.
+          <p className={`mt-8 max-w-xl text-lg text-ivory/60 leading-relaxed transition-all duration-1000 delay-700 ${revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            Premium skincare crafted with nature's finest ingredients for skin that <span className="shimmer-text">radiates from within</span>.
           </p>
 
-          <div className="mt-8 flex flex-col items-center gap-3 opacity-0 animate-[fadeUp_0.9s_ease-out_1.35s_forwards]">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-ivory/50">Scroll to explore</span>
-            <span className="block w-px h-8 bg-blush/60 origin-top animate-[scrollLine_2.4s_ease-in-out_infinite]" />
-          </div>
-
-          <div className="mt-6 flex flex-wrap justify-center gap-4 opacity-0 animate-[fadeUp_0.9s_ease-out_1.5s_forwards]">
+          <div className={`mt-12 flex flex-wrap justify-center gap-6 transition-all duration-1000 delay-1000 ${revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <a
               href="#products"
-              className="px-10 py-3.5 rounded-full bg-blush text-primary-foreground font-medium tracking-[0.2em] text-xs uppercase hover:bg-blush/90 transition shine-btn rose-gold-glow"
+              className="px-12 py-4 rounded-full bg-rose-gold text-background font-medium tracking-[0.2em] text-[10px] uppercase hover:bg-ivory transition-all duration-500 shine-btn rose-gold-glow"
             >
               Shop Now
             </a>
             <a
-              href="#products"
-              className="px-10 py-3.5 rounded-full border border-ivory/30 text-ivory tracking-[0.2em] text-xs uppercase hover:bg-ivory/10 hover:border-blush/60 transition"
+              href="#about"
+              className="px-12 py-4 rounded-full border border-ivory/20 text-ivory tracking-[0.2em] text-[10px] uppercase hover:bg-ivory/5 hover:border-rose-gold/40 transition-all duration-500"
             >
-              Discover Products
+              Our Story
             </a>
           </div>
+        </div>
+
+        <div className={`absolute left-1/2 -translate-x-1/2 bottom-12 flex flex-col items-center text-rose-gold/40 text-[10px] tracking-[0.4em] uppercase transition-all duration-1000 delay-[1.5s] ${revealed ? 'opacity-100' : 'opacity-0'}`}>
+          Explore
+          <ChevronDown className="mt-2 w-4 h-4 animate-scroll-indicator" />
         </div>
       </div>
     </section>

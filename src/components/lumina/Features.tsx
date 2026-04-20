@@ -1,34 +1,50 @@
-import { Leaf, Heart, ShieldCheck, Sparkles } from "lucide-react";
+import { Shield, Leaf, Zap, Heart } from "lucide-react";
 
 const items = [
-  { icon: Leaf, title: "Natural Ingredients", desc: "100% botanically sourced actives. No parabens, sulfates, or synthetic fragrances. Just pure, effective nature." },
-  { icon: Heart, title: "Cruelty-Free", desc: "Every Lumina formula is certified cruelty-free and vegan. Beauty that respects all life." },
-  { icon: ShieldCheck, title: "Dermatologist Tested", desc: "Clinically validated by independent dermatologists. Safe for all skin types including sensitive." },
-  { icon: Sparkles, title: "Visible Results", desc: "Transformation you can see and feel within 2 weeks of consistent use. Real science, real results." },
+  {
+    title: "Eco-Harvested",
+    description: "Sustainably sourced botanical ingredients that respect our planet.",
+    icon: Leaf,
+  },
+  {
+    title: "Clinical Potency",
+    description: "Bio-engineered extracts with scientifically proven results for every skin type.",
+    icon: Zap,
+  },
+  {
+    title: "Absolute Safety",
+    description: "Dermatologically tested, toxin-free formulas formulated in Geneva.",
+    icon: Shield,
+  },
+  {
+    title: "Ethical Soul",
+    description: "100% cruelty-free commitment with carbon-neutral packaging.",
+    icon: Heart,
+  },
 ];
 
 export const Features = () => {
   return (
-    <section className="relative py-28">
-      <div className="container">
-        <div className="reveal text-center max-w-2xl mx-auto">
-          <p className="text-xs tracking-[0.3em] uppercase text-blush">The Lumina Difference</p>
-          <h2 className="mt-4 font-serif text-4xl md:text-5xl text-ivory">
-            Crafted with <span className="italic">intention.</span>
+    <section id="about" className="py-32 bg-background relative">
+      <div className="container relative z-10">
+        <div className="text-center max-w-2xl mx-auto mb-20">
+          <span className="text-rose-gold text-[10px] tracking-[0.4em] uppercase mb-4 block">The Lumina Difference</span>
+          <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-display text-ivory leading-tight mb-6">
+            Where Nature Meets <span className="italic">Luxury Science.</span>
           </h2>
+          <p className="text-ivory/60 leading-relaxed font-sans">
+            We believe that true beauty shouldn't come at a cost. Our mission is to provide premium skincare that is as effective as it is ethical.
+          </p>
         </div>
-        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {items.map((it, i) => (
-            <div
-              key={it.title}
-              className="reveal p-8 rounded-2xl border border-border/60 bg-card hover:border-blush/40 hover:bg-card/80 hover:-translate-y-1 transition-all duration-500 group text-center"
-              style={{ transitionDelay: `${i * 80}ms` }}
-            >
-              <div className="mx-auto w-14 h-14 grid place-items-center rounded-full bg-blush/10 ring-1 ring-blush/30 group-hover:bg-blush/20 transition">
-                <it.icon className="w-6 h-6 text-blush" />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {items.map((item, i) => (
+            <div key={i} className="glass-card group p-10 flex flex-col items-center text-center transition-all duration-500 hover:border-rose-gold/30 hover:-translate-y-2">
+              <div className="w-16 h-16 rounded-2xl bg-surface/50 border border-ivory/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                <item.icon className="w-7 h-7 text-rose-gold" />
               </div>
-              <h3 className="mt-6 font-serif text-xl text-ivory">{it.title}</h3>
-              <p className="mt-2 text-sm text-ivory/60 leading-relaxed">{it.desc}</p>
+              <h3 className="text-xl font-display text-ivory mb-4">{item.title}</h3>
+              <p className="text-sm text-ivory/40 leading-relaxed font-sans">{item.description}</p>
             </div>
           ))}
         </div>

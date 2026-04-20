@@ -1,107 +1,90 @@
-import { Eye, ShoppingBag } from "lucide-react";
-import { toast } from "sonner";
-import { useCart } from "@/store/cart";
+import { ShoppingBag, Eye, Heart } from "lucide-react";
 
 const products = [
   {
-    id: "radiance-glow-serum",
+    id: 1,
     name: "Radiance Glow Serum",
-    category: "Skincare",
-    price: 78,
-    badge: "Best Seller",
-    img: "/assets/serum.png",
+    category: "Intense Hydration",
+    price: "$85.00",
+    image: "/assets/serum.png",
+    tag: "Best Seller",
   },
   {
-    id: "velvet-lip-elixir",
+    id: 2,
     name: "Velvet Lip Elixir",
-    category: "Makeup",
-    price: 42,
-    badge: "New",
-    img: "/assets/elixir.png",
+    category: "Natural Shine",
+    price: "$45.00",
+    image: "/assets/elixir.png",
+    tag: "New Arrival",
   },
   {
-    id: "pearl-luminosity-cream",
+    id: 3,
     name: "Pearl Luminosity Cream",
-    category: "Skincare",
-    price: 95,
-    badge: "Award Winner",
-    img: "/assets/cream.png",
+    category: "Skin Silkering",
+    price: "$120.00",
+    image: "/assets/cream.png",
+    tag: "Premium",
   },
 ];
 
 export const Products = () => {
-  const addItem = useCart((s) => s.addItem);
-  const openCart = useCart((s) => s.open);
-
   return (
-    <section id="products" className="relative py-32 bg-secondary/40">
-      <div className="container">
-        <div className="reveal grid md:grid-cols-[1fr_auto] items-end gap-8">
-          <div>
-            <p className="text-xs tracking-[0.3em] uppercase text-blush">Best Sellers</p>
-            <h2 className="mt-4 font-serif text-5xl md:text-7xl leading-[1.02] text-ivory text-balance">
-              Signature <span className="italic">Collection.</span>
+    <section id="products" className="py-32 bg-background relative overflow-hidden">
+      {/* Decorative text background */}
+      <div className="absolute top-20 -right-20 text-[15rem] font-display text-white/[0.02] pointer-events-none select-none uppercase tracking-tighter">
+        Lumina
+      </div>
+      
+      <div className="container relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+          <div className="max-w-2xl">
+            <span className="text-rose-gold text-[10px] tracking-[0.4em] uppercase mb-4 block">Signature Collection</span>
+            <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-display text-ivory leading-tight">
+              Crafted with <span className="italic">Pure Brilliance.</span>
             </h2>
           </div>
-          <p className="text-ivory/60 md:text-right md:max-w-xs">
-            Our most-loved formulas, trusted by thousands.
-          </p>
+          <a href="#all" className="text-ivory/60 text-[10px] tracking-[0.2em] hover:text-rose-gold transition-colors flex items-center gap-2 uppercase">
+            View all products
+            <span className="w-12 h-[1px] bg-rose-gold/30"></span>
+          </a>
         </div>
 
-        <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((p, i) => (
-            <article
-              key={p.id}
-              className="reveal group hover-lift"
-              style={{ transitionDelay: `${i * 60}ms` }}
-            >
-              <div className="relative aspect-[4/5] overflow-hidden bg-muted rounded-2xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {products.map((product) => (
+            <div key={product.id} className="product-card-hover flex flex-col items-center">
+              <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface group mb-8 rounded-3xl glass-card">
+                {product.tag && (
+                  <span className="absolute top-6 right-6 z-10 px-4 py-1 rounded-full bg-background/60 backdrop-blur-md text-rose-gold text-[8px] tracking-[0.2em] uppercase border border-rose-gold/20">
+                    {product.tag}
+                  </span>
+                )}
+                
                 <img
-                  src={p.img}
-                  alt={p.name}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-background/80 backdrop-blur text-[10px] tracking-widest uppercase text-blush border border-blush/30">
-                  {p.badge}
-                </span>
-                <button
-                  aria-label="Quick view"
-                  onClick={() => toast(`${p.name} — quick view coming soon`)}
-                  className="absolute top-4 right-4 w-10 h-10 grid place-items-center rounded-full bg-background/80 backdrop-blur text-ivory opacity-0 group-hover:opacity-100 transition hover:bg-blush hover:text-primary-foreground"
-                >
-                  <Eye className="w-4 h-4" />
-                </button>
-                <div className="absolute inset-x-4 bottom-4 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition">
-                  <button
-                    onClick={() => {
-                      addItem({
-                        id: p.id,
-                        name: p.name,
-                        price: p.price,
-                        img: p.img,
-                        category: p.category,
-                      });
-                      toast.success(`${p.name} added to bag`, {
-                        action: { label: "View", onClick: () => openCart() },
-                      });
-                    }}
-                    className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-blush text-primary-foreground text-sm font-medium hover:bg-blush/90 transition shine-btn rose-gold-glow"
-                  >
-                    <ShoppingBag className="w-4 h-4" /> Add to Cart
+
+                {/* Overlay actions */}
+                <div className="absolute inset-0 bg-background/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-sm flex items-center justify-center gap-4">
+                  <button className="w-12 h-12 rounded-full bg-ivory text-background flex items-center justify-center hover:bg-rose-gold transition-colors duration-300">
+                    <ShoppingBag className="w-5 h-5" />
+                  </button>
+                  <button className="w-12 h-12 rounded-full bg-ivory/10 text-ivory border border-ivory/20 flex items-center justify-center hover:bg-ivory/20 transition-colors duration-300">
+                    <Eye className="w-5 h-5" />
+                  </button>
+                  <button className="w-12 h-12 rounded-full bg-ivory/10 text-ivory border border-ivory/20 flex items-center justify-center hover:bg-red-400/20 group/heart transition-colors duration-300">
+                    <Heart className="w-5 h-5 group-hover/heart:fill-red-400 transition-colors" />
                   </button>
                 </div>
               </div>
-              <div className="mt-5 flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-[11px] tracking-widest uppercase text-ivory/50">
-                    {p.category}
-                  </p>
-                  <h3 className="mt-1 font-serif text-xl text-ivory">{p.name}</h3>
-                </div>
-                <p className="font-serif text-xl text-blush">${p.price}</p>
+
+              <div className="text-center">
+                <span className="text-[10px] tracking-[0.2em] text-rose-gold/60 uppercase block mb-2">{product.category}</span>
+                <h3 className="text-2xl font-display text-ivory mb-2">{product.name}</h3>
+                <p className="text-lg font-sans text-rose-gold">{product.price}</p>
               </div>
-            </article>
+            </div>
           ))}
         </div>
       </div>

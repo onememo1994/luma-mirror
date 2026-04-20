@@ -47,7 +47,7 @@ export const BeforeAfter = () => {
         <div className="reveal mt-14 max-w-4xl mx-auto">
           <div
             ref={ref}
-            className="relative aspect-[16/10] overflow-hidden rounded-sm select-none cursor-ew-resize"
+            className="relative aspect-[16/10] overflow-hidden rounded-2xl select-none cursor-ew-resize"
             onMouseDown={(e) => {
               dragging.current = true;
               setFromClientX(e.clientX);

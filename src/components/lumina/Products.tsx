@@ -36,11 +36,16 @@ export const Products = () => {
   return (
     <section id="products" className="relative py-32 bg-secondary/40">
       <div className="container">
-        <div className="reveal max-w-2xl">
-          <p className="text-xs tracking-[0.3em] uppercase text-blush">Signature Collection</p>
-          <h2 className="mt-4 font-serif text-5xl md:text-6xl text-ivory text-balance">
-            Our most-loved formulas, <span className="italic">trusted by thousands.</span>
-          </h2>
+        <div className="reveal grid md:grid-cols-[1fr_auto] items-end gap-8">
+          <div>
+            <p className="text-xs tracking-[0.3em] uppercase text-blush">Best Sellers</p>
+            <h2 className="mt-4 font-serif text-5xl md:text-7xl leading-[1.02] text-ivory text-balance">
+              Signature <span className="italic">Collection.</span>
+            </h2>
+          </div>
+          <p className="text-ivory/60 md:text-right md:max-w-xs">
+            Our most-loved formulas, trusted by thousands.
+          </p>
         </div>
 
         <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -50,7 +55,7 @@ export const Products = () => {
               className="reveal group hover-lift"
               style={{ transitionDelay: `${i * 60}ms` }}
             >
-              <div className="relative aspect-[4/5] overflow-hidden bg-muted rounded-sm">
+              <div className="relative aspect-[4/5] overflow-hidden bg-muted rounded-2xl">
                 <img
                   src={p.img}
                   alt={p.name}

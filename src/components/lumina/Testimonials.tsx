@@ -4,7 +4,7 @@ export const Testimonials = () => {
   return (
     <section className="relative py-32">
       <div className="container max-w-4xl">
-        <div className="reveal relative bg-card border border-border/60 rounded-sm p-10 md:p-16 grid md:grid-cols-[180px_1fr] gap-10 items-center">
+        <div className="reveal relative bg-card border border-border/60 rounded-3xl p-10 md:p-16 grid md:grid-cols-[180px_1fr] gap-10 items-center">
           <div className="mx-auto md:mx-0 w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden ring-2 ring-blush/30">
             <img
               src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80"

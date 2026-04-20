@@ -39,7 +39,7 @@ export const Categories = () => {
             <a
               key={c.title}
               href="#products"
-              className="reveal group relative aspect-[3/4] overflow-hidden rounded-sm"
+              className="reveal group relative aspect-[3/4] overflow-hidden rounded-2xl"
               style={{ transitionDelay: `${i * 70}ms` }}
             >
               <img

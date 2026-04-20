@@ -27,9 +27,10 @@ export const Hero = () => {
           className="w-full h-full object-cover animate-[kenburns_24s_ease-in-out_infinite_alternate]"
           loading="eager"
         />
-        {/* Cinematic vignette */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/25 to-background/85" />
-        <div className="absolute inset-0 bg-background/25" />
+        {/* Cinematic vignette — keep image visible */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/70" />
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-background/40" />
+        <div className="absolute inset-0 bg-background/10" />
       </div>
 
       {/* Floating particles */}

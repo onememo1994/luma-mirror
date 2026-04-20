@@ -21,7 +21,7 @@ export const Features = () => {
           {items.map((it, i) => (
             <div
               key={it.title}
-              className="reveal p-8 rounded-sm border border-border/60 bg-card hover:border-blush/40 hover:bg-card/80 transition group text-center"
+              className="reveal p-8 rounded-2xl border border-border/60 bg-card hover:border-blush/40 hover:bg-card/80 hover:-translate-y-1 transition-all duration-500 group text-center"
               style={{ transitionDelay: `${i * 80}ms` }}
             >
               <div className="mx-auto w-14 h-14 grid place-items-center rounded-full bg-blush/10 ring-1 ring-blush/30 group-hover:bg-blush/20 transition">

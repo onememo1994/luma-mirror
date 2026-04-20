@@ -8,6 +8,7 @@ import { Testimonials } from "@/components/lumina/Testimonials";
 import { Categories } from "@/components/lumina/Categories";
 import { Newsletter } from "@/components/lumina/Newsletter";
 import { Footer } from "@/components/lumina/Footer";
+import { CartDrawer } from "@/components/lumina/CartDrawer";
 import { useReveal } from "@/hooks/useReveal";
 
 const Index = () => {
@@ -24,6 +25,7 @@ const Index = () => {
       <Categories />
       <Newsletter />
       <Footer />
+      <CartDrawer />
     </main>
   );
 };

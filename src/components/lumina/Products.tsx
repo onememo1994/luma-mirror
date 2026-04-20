@@ -1,8 +1,10 @@
 import { Eye, ShoppingBag } from "lucide-react";
 import { toast } from "sonner";
+import { useCart } from "@/store/cart";
 
 const products = [
   {
+    id: "radiance-glow-serum",
     name: "Radiance Glow Serum",
     category: "Skincare",
     price: 89,
@@ -10,6 +12,7 @@ const products = [
     img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=900&q=80",
   },
   {
+    id: "velvet-lip-elixir",
     name: "Velvet Lip Elixir",
     category: "Makeup",
     price: 42,
@@ -17,6 +20,7 @@ const products = [
     img: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=900&q=80",
   },
   {
+    id: "pearl-luminosity-cream",
     name: "Pearl Luminosity Cream",
     category: "Skincare",
     price: 124,
@@ -24,6 +28,7 @@ const products = [
     img: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=900&q=80",
   },
   {
+    id: "golden-hour-bronzer",
     name: "Golden Hour Bronzer",
     category: "Makeup",
     price: 56,
@@ -31,6 +36,7 @@ const products = [
     img: "https://images.unsplash.com/photo-1631214524020-3c8c9f3a0b2e?auto=format&fit=crop&w=900&q=80",
   },
   {
+    id: "rose-petal-toner",
     name: "Rose Petal Toner",
     category: "Skincare",
     price: 48,
@@ -38,6 +44,7 @@ const products = [
     img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=80",
   },
   {
+    id: "midnight-repair-mask",
     name: "Midnight Repair Mask",
     category: "Skincare",
     price: 78,
@@ -47,6 +54,9 @@ const products = [
 ];
 
 export const Products = () => {
+  const addItem = useCart((s) => s.addItem);
+  const openCart = useCart((s) => s.open);
+
   return (
     <section id="products" className="relative py-32 bg-secondary/40">
       <div className="container">
@@ -60,7 +70,7 @@ export const Products = () => {
         <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((p, i) => (
             <article
-              key={p.name}
+              key={p.id}
               className="reveal group hover-lift"
               style={{ transitionDelay: `${i * 60}ms` }}
             >
@@ -76,13 +86,25 @@ export const Products = () => {
                 </span>
                 <button
                   aria-label="Quick view"
+                  onClick={() => toast(`${p.name} — quick view coming soon`)}
                   className="absolute top-4 right-4 w-10 h-10 grid place-items-center rounded-full bg-background/80 backdrop-blur text-ivory opacity-0 group-hover:opacity-100 transition hover:bg-blush hover:text-primary-foreground"
                 >
                   <Eye className="w-4 h-4" />
                 </button>
                 <div className="absolute inset-x-4 bottom-4 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition">
                   <button
-                    onClick={() => toast.success(`${p.name} added to bag`)}
+                    onClick={() => {
+                      addItem({
+                        id: p.id,
+                        name: p.name,
+                        price: p.price,
+                        img: p.img,
+                        category: p.category,
+                      });
+                      toast.success(`${p.name} added to bag`, {
+                        action: { label: "View", onClick: () => openCart() },
+                      });
+                    }}
                     className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-blush text-primary-foreground text-sm font-medium hover:bg-blush/90"
                   >
                     <ShoppingBag className="w-4 h-4" /> Add to Cart

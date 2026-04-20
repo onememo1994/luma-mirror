@@ -66,6 +66,40 @@
     font-family: 'Inter', system-ui, sans-serif;
   }
 
+  /* Custom scrollbar — rose gold on near-black */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--blush) / 0.6),
+      hsl(var(--champagne) / 0.5)
+    );
+    border-radius: 9999px;
+    border: 2px solid hsl(var(--background));
+    transition: background 0.3s ease;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--blush)),
+      hsl(var(--champagne))
+    );
+  }
+  ::-webkit-scrollbar-corner {
+    background: hsl(var(--background));
+  }
+  /* Firefox */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--blush) / 0.6) hsl(var(--background));
+  }
+
   h1, h2, h3, h4, .font-serif {
     font-family: 'Playfair Display', Georgia, serif;
   }
